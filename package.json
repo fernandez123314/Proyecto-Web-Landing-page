@@ -1,0 +1,29 @@
+{
+  "name": "proyecto-web-landing-page",
+  "version": "1.0.0",
+  "description": "Proyecto Final Epica",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fernandez123314/Proyecto-Web-Landing-page.git"
+  },
+  "author": "Fernandez Adhemar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fernandez123314/Proyecto-Web-Landing-page/issues"
+  },
+  "homepage": "https://github.com/fernandez123314/Proyecto-Web-Landing-page#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.6.1",
+    "sequelize": "^6.33.0"
+  }
+}
