@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Posts</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+   
+</head>
+<body>
+    <div class="container">
+        <h1>Lista de Posts</h1>
+        <ul class="list-group">
+            <% posts.forEach((post) => { %>
+                <li class="list-group-item">
+                    <h3><%= post.titulo %></h3>
+                    <p><%= post.contenido %></p>
+                    <% if (post.imagen) { %>
+                        <img src="<%= post.imagen %>" alt="<%= post.titulo %>" class="img-fluid">
+                    <% } %>
+                    <p>Fecha de creación: <%= post.createdAt.toDateString() %></p>
+                    <button class="btn btn-primary" onclick="editarPost('<%= post.id %>')">Editar</button>
+                    <button class="btn btn-danger" onclick="eliminarPost('<%= post.id %>')">Eliminar</button>
+                </li>
+            <% }); %>
+        </ul>
+        
+        <script>
+            function editarPost(postId) {
+                // Redirige a la página de edición o muestra el formulario de edición
+                window.location.href = `/posts/${postId}/editar`;
+            }
+        
+            function eliminarPost(postId) {
+                if (confirm('¿Estás seguro de que deseas eliminar este post?')) {
+                    fetch(`/posts/${postId}`, {
+                        method: 'DELETE',
+                    })
+                    .then(response => {
+                        if (response.status === 204) {
+                            // Actualiza la lista de posts o muestra un mensaje de éxito
+                            window.location.reload();
+                        } else {
+                            console.error('Error al eliminar el post');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error al eliminar el post:', error);
+                    });
+                }
+            }
+        </script>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+</body>
+</html>
